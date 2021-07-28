@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ compteurA }}</h1>
+        <!-- <button v-on:click="compteurA++">+</button> -->
+        <button @click="compteurA++">+</button>
+        <button v-on:click="compteurB--">-</button>
+        <p>{{ checkVal() }} ||||{{ memo }}</p>
+        <a :href="compteurA"></a>
+        <button v-on:click="compteurB++">+</button>
+        <h1>{{ compteurB }}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                compteurA: 0,
+                compteurB: 0
+            },
+            methods: {
+                checkVal: function () {
+                    console.log('it ok');
+                    return this.compteurA > 10 ? 'Superieur à 10 ' : ' inferieur à 10 ';
+                }
+            },
+            watch: {
+                compteurA: function () {
+        
+                    setTimeout(()=> {
+                        this.compteurA = 0;
+                    }, 1500);
+                }
+            },
+            computed: {
+                memo: function () {
+                    console.log('it ok memo');
+                    return this.compteurA > 10 ? 'Superieur à 10 ' : ' inferieur à 10 ';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
